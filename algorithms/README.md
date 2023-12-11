@@ -18,3 +18,4 @@
 
 
 
+![Binar_Fundamentals_00.png](./assets/1686879866-VArRlW-Binar_Fundamentals_00.png)

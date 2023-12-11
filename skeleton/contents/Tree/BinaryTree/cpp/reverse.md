@@ -38,6 +38,8 @@ void freeTree(TreeNode<T>* tree){
 
 主要注意一下空指针提前判断就行！
 
+* 一个前序遍历序列可能对应多个二叉树的形态
+
 ```cpp
 template<typename T>
 void preorder(const TreeNode<T> *node, std::vector<T> &out){
@@ -63,6 +65,8 @@ std::vector<T> preorderTraversal(const TreeNode<T> *node){
 
 主要注意一下空指针提前判断就行！
 
+* 一个中序遍历序列可能对应多个二叉树的形态
+
 ```cpp
 template<typename T>
 void inorder(const TreeNode<T> *node, std::vector<T> &out){
@@ -86,6 +90,8 @@ std::vector<T> inorderTraversal(const TreeNode<T> *node){
 #### [3. 递归后序遍历](#)
 
 细节决定成败！
+
+* 一个后序遍历序列可能对应多个二叉树的形态
 
 ```cpp
 template<typename T>

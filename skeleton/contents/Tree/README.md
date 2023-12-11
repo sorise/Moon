@@ -18,8 +18,8 @@
     * 层次遍历
 * [二叉树](./BinaryTree)
   * [二叉树的基本概念、各种二叉树](./BinaryTree)
-  * [二叉树的物理存储结构](./BinaryTree/store.md)
-    * 链式
+  * [二叉树的物理存储结构](./BinaryTree/cpp/store.md)
+    * 链式 - 二叉链表、三叉链表
     * 顺序存储
   * 遍历
     * [递归遍历：前、中后序遍历](./BinaryTree/cpp/reverse.md)
@@ -27,7 +27,7 @@
     * [层次遍历](./BinaryTree/cpp/level.md)
     * 由两个遍历序列(一定要有中序遍历序列)生成二叉树
   * [线索二叉树](./BinaryTree/cpp/clueTree.md)
-  * [**二叉排序树**](./BinaryTree/cpp/avl.md)
+  * [**二叉排序树**](./BinaryTree/cpp/sortTree.md)
   * [**平衡二叉树**](./BinaryTree/cpp/avl.md)
   * [相关题目](#relate)
 * [哈弗曼树、哈弗曼编码](./cpp/HuffmanTree.md)

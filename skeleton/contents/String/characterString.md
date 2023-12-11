@@ -115,3 +115,56 @@ vector<int> getNext(const std::string& pattern){
     return next;
 }
 ```
+
+其它方法：
+
+```cpp
+//动态规划
+vector<int> get_next(string& pattern){
+    int n = pattern.size();
+    vector<int> next(n + 1, 0);
+    int i = 2;  //next[i]
+    int j = 0;  //j 表示上一个next[i-1] 的 值
+    while(i < n){
+        if(j == 0 || pattern[i - 1] == pattern[j]){
+            if (pattern[i - 1] == pattern[j]) j++;
+            next[i] = j;
+            i++;
+        }else{
+            j = next[j];
+        }
+
+    }
+    return next;
+}
+
+```
+
+kmp算法
+
+```cpp
+int strStr(string haystack, string needle) {
+    int n = haystack.size();
+    int m = needle.size();
+    int i = 0;
+    int j = 0;
+
+    vector<int> next = get_next(needle);
+
+    while(i < n && j < m){
+        if(haystack[i] == needle[j]){
+            i++;
+            j++;
+        }else{
+            if(j == 0) i++;
+            else{
+                j = next[j];
+            }
+        }
+    }
+
+    if(j >= m) return i - m;
+    return -1;
+}
+```
+

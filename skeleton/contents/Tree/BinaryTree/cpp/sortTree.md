@@ -1,4 +1,4 @@
-### [二叉排序树*（Binary Search Tree）*](#)
+### [二叉排序树（Binary Search Tree）](#)
 
 介绍：又叫**二叉查找树**，其中序遍历结果就是一个排序好的序列，满足如下的性质：
 
@@ -21,7 +21,6 @@
 **二叉排序树插入相同值的处理**
 
 * 不插入，二叉排序树的节点必须是 `unique` 的。
-
 * 修改数据结构，增加一个字段，指定该节点的值重复了多少次。
 
 ```cpp
@@ -52,13 +51,8 @@ void freeTree(TreeNode* tree){
 但是可能会出现一种极端的情况，那就是插入的数据是有序的（递增或者递减），那么所有的节点都会在根节点的右侧或左侧，此时，二叉搜索树就变为了一个链表，它的操作效率就降低了，时间复杂度为O(N)，所以可以认为二叉搜索树的时间复杂度介于O（logN）和O(N)之间，视情况而定。
 
 
-
 * 最好情况下, 二叉搜索树是一棵完全二叉树, 它搜索节点的时间复杂度为: O(logn);
-
 * 最坏情况下, 二叉搜索树会是一棵只有单分支的树, 则它搜索节点的时间复杂度为: O(n)
-
-
-
 
 
 ### [1.  构建一颗二叉查找树](#)
@@ -68,7 +62,6 @@ void freeTree(TreeNode* tree){
 #### [1.1 非递归算法](#)
 
 此方法使用了 `指针引用`，二叉树的每一个节点都在 **堆** 上面。
-
 ```cpp
 static bool Insert(TreeNode* & head,int val){
     if (head == nullptr){
@@ -120,7 +113,6 @@ freeTree(tree);
 
 
 #### [1.2 递归算法](#)
-
 要求传入的头结点非 空指针。
 
 ```cpp
@@ -159,17 +151,13 @@ RecursiveInsert(tree , 101);
 
 
 ### [2. 二叉排序树的查找操作](#)
-
 **二叉搜索树的性能**：
 
 * 最好情况下, 二叉搜索树是一棵完全二叉树, 它搜索节点的时间复杂度为: O(logn);
-
 * 最坏情况下, 二叉搜索树会是一棵只有单分支的树, 则它搜索节点的时间复杂度为: O(n)
 
 #### [2.1  查找某个值](#)
-
 根据二叉搜索树的性质:
-
 * 如果当前节点值 **<** 待查找值, 去该节点**右子树**继续查找。
 * 如果当前节点值 **>** 待查找值, 去该节点**左子树**继续查找。
 
@@ -189,7 +177,6 @@ static TreeNode* Find(TreeNode*  head,int val){
 #### [2.2  查找最值](#)
 
 最左边的节点就是最小值，最右边的节点就是最大值。
-
 ```cpp
 static TreeNode* FindMin(TreeNode*  head){
     if (head == nullptr) return head;
@@ -211,9 +198,7 @@ static TreeNode* FindMax(TreeNode*  head){
 
 
 #### [2.3  查找某个值的双亲节点](#)
-
 有时候需要知道某个节点的父节点。
-
 ```cpp
 static TreeNode* FindParent(TreeNode * head, TreeNode *node){
     if (head == nullptr || node == nullptr) return nullptr;
@@ -231,7 +216,6 @@ static TreeNode* FindParent(TreeNode * head, TreeNode *node){
 #### [2.4 查找节点，并返回节点和父节点](#)
 
 这是一个特殊的需求：
-
 ```cpp
 //<node, parent>
 static std::tuple<TreeNode*, TreeNode*> FindNodeAndParent(TreeNode*  head, int val){
@@ -286,7 +270,6 @@ static std::tuple<TreeNode*, TreeNode*> FindNodeAndParent(TreeNode*  head, int v
 
 
 #### [3.2  被删除结点D仅有一个孩子](#)
-
 **如果只有左孩子**，那么只需要把要删除结点的左孩子连接到要删除结点的父亲结点，然后删除D结点；
 
 * **删除节点的值修改为其左子树根节点的值。**
@@ -300,16 +283,13 @@ static std::tuple<TreeNode*, TreeNode*> FindNodeAndParent(TreeNode*  head, int v
 * 删除节点的左右孩子指针修改为右子树根节点的左右孩子指针。
 
 
-
 <img src="../../assets/image-20230601164825649.png" width="800px">
 
 
-
 #### [3.3  要删除的节点左右子树均存在](#)
-
 这种情况比较难办，**可以使用其右子树的最小数据代替该节点的数据，或者左子树的最大值来代替该节点的数据**。即选择 **左子树的“最右边”，或者 右子树的“最左边”**。
 
- 推荐：[**使用左子树的最大值代替该节点的数据**](#)， 使用其他的元素替换会打扰其顺序。
+推荐：[**使用左子树的最大值代替该节点的数据**](#)， 使用其他的元素替换会打扰其顺序。
 
 例如以72 代替 75，然后删除 72.
 
@@ -325,9 +305,6 @@ static std::tuple<TreeNode*, TreeNode*> FindNodeAndParent(TreeNode*  head, int v
 <img src="../../assets/image-20230601202622403.png" width="820px">
 
 
-
-
-
 **综合案例分析1**: 需要删除64这个节点。
 
 <img src="../../assets/image-20230601220839759.png" width="1200px">
@@ -335,7 +312,6 @@ static std::tuple<TreeNode*, TreeNode*> FindNodeAndParent(TreeNode*  head, int v
 首先找到65这个节点，其有左右孩子：
 
 交换节点为45，由于45**不存在左子树**， 属于叶子节点，直接删除。
-
 
 
 **综合案例分析2**: 需要删除7这个节点。 需要和6这个节点交换位置。 6有一个左子树，然后：
@@ -348,7 +324,6 @@ static std::tuple<TreeNode*, TreeNode*> FindNodeAndParent(TreeNode*  head, int v
 
 
 #### [3.4 删除算法实现](#)
-
 **二叉排序树节点被存在栈上面，需要删除** 。
 
 **自己的实现：**
@@ -411,10 +386,7 @@ TreeNode* deleteNode(TreeNode* root, int key) {
 }
 ```
 
-
-
 **leetcode**:
-
 ```cpp
 class Solution {
 public:
@@ -452,12 +424,6 @@ public:
         return root;
     }
 };
-/*
-作者：LeetCode-Solution
-链接：https://leetcode.cn/problems/delete-node-in-a-bst/solution/shan-chu-er-cha-sou-suo-shu-zhong-de-jie-n6vo/
-来源：力扣（LeetCode）
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
-*/
 ```
 
 
